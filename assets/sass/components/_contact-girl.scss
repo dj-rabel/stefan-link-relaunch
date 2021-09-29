@@ -1,0 +1,14 @@
+.contact-girl {
+  display: block;
+  max-height: 14.5em;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  @include breakpoint('<=large') {
+    max-height: 12.5em;
+  }
+  @include breakpoint('<=small') {
+    display: none;
+  }
+}

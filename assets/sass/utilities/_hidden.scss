@@ -1,0 +1,17 @@
+@each $breakpoint, $_ in $breakpoints {
+  @include breakpoint('#{$breakpoint}') {
+    .hidden-#{$breakpoint} {
+      display: none !important;
+    }
+  }
+  @include breakpoint('<=#{$breakpoint}') {
+    .hidden-#{$breakpoint}-down {
+      display: none !important;
+    }
+  }
+  @include breakpoint('>=#{$breakpoint}') {
+    .hidden-#{$breakpoint}-up {
+      display: none !important;
+    }
+  }
+}
