@@ -8,6 +8,7 @@
 #header {
   @include padding(5em, 5em, (0, 0, -2em, 0));
   text-align: center;
+  overflow: hidden;
 
   h1 {
     font-weight: bolder;
