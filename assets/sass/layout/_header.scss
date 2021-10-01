@@ -11,13 +11,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 4.25em);
-  @include breakpoint('<=large') {
-    min-height: calc(100vh - 5em);
-  }
-  @include breakpoint('<=small') {
-    min-height: auto;
-  }
 
   h1 {
     font-weight: bolder;
@@ -51,6 +44,13 @@
   &.alt {
     @include padding(6em, 5em, (1em, 0, 0, 0));
     padding-bottom: 0 !important;
+    min-height: calc(100vh - 4.25em);
+    @include breakpoint('<=large') {
+      min-height: calc(100vh - 5em);
+    }
+    @include breakpoint('<=small') {
+      min-height: auto;
+    }
 
     h1 {
       font-size: 3.25em;
