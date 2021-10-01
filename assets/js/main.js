@@ -23,11 +23,16 @@ if (window.HTMLCollection && !HTMLCollection.prototype.forEach) {
   });
 
   // Play initial animations on page load.
-  window.addEventListener('load', function () {
-    window.setTimeout(function () {
-      document.body.classList.remove('is-preload');
-    }, 100);
-  })
+  // window.addEventListener('load', function () {
+  //   window.setTimeout(function () {
+  //     document.body.classList.remove('is-preload');
+  //   }, 100);
+  // })
+  window.setTimeout(function () {
+    window.requestAnimationFrame(function(){
+      document.getElementById('backdrop').classList.remove('is-preload');
+    });
+  }, 1000);
 
   //
   // Helper functions and stuff

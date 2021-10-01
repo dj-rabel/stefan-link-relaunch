@@ -15,7 +15,7 @@
   filter: saturate(1);
   transition: filter 1.5s ease-out;
 
-  .is-preload & {
+  &.is-preload {
     filter: saturate(0);
   }
 

@@ -34,9 +34,12 @@
     line-height: 2em;
     color: _palette(invert, fg-bold);
     background-color: transparentize(_palette(invert, bg-alt), 0.05);
+  }
 
-    @for $i from 1 through 5 {
-      &.style#{$i} {
+  @for $i from 1 through 5 {
+    &.style#{$i} {
+      background-color: _palette(accent#{$i});
+      .legend {
         background-color: transparentize(_palette(accent#{$i}), 0.05);
         color: _palette(fg-bold);
       }
