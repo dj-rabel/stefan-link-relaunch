@@ -30,12 +30,11 @@
   vertical-align: bottom;
   z-index: _misc(z-index-base);
 
+
+
   @include breakpoint('<=large') {
     font-size: 1.15em;
   }
-  //@include breakpoint('<=small') {
-  //  font-size: 1.1em;
-  //}
   @include breakpoint('<=xsmall') {
     font-size: 1em;
   }
@@ -72,6 +71,9 @@
 
         &:hover {
           background-color: _palette(invert, border-bg);
+          @media (hover: none) {
+            background-color: transparent;
+          }
         }
 
         &.active {

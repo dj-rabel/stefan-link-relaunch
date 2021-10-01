@@ -12,6 +12,12 @@
   background-repeat: no-repeat;
   background-position: top center;
   border-bottom: solid 1px _palette(invert, border);
+  filter: saturate(1);
+  transition: filter 1.5s ease-out;
+
+  .is-preload & {
+    filter: saturate(0);
+  }
 
   img {
     display: block;

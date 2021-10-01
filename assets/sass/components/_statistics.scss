@@ -91,6 +91,9 @@
           padding-top: 75%;
         }
       }
+      &:hover .slider > span {
+        transform: scale(1.1);
+      }
 
       .legend {
         display: block;

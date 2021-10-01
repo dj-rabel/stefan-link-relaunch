@@ -5,7 +5,6 @@
 ///
 
 /* Image */
-
 .image {
   border-radius: _size(border-radius);
   border: 0;
@@ -14,8 +13,14 @@
   overflow: hidden;
 
   img {
-    border-radius: _size(border-radius) + 1px; // Gives slightly smoother edges ...
     display: block;
+    border-radius: _size(border-radius) + 1px; // Gives slightly smoother edges ...
+    //transform: scale(1.001);
+    //transition: transform .3s ease-in-out;
+    //will-change: transform;
+    //&:hover {
+    //  transform: scale(1.1);
+    //}
   }
 
   .legend {
@@ -23,6 +28,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
     text-align: center;
     font-size: 1.5em;
     line-height: 2em;
