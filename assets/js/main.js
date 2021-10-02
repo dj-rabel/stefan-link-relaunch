@@ -71,7 +71,6 @@ if (!Math.trunc) {
   PauseableTimeout.prototype.pause = function () {
     window.clearTimeout(this.timerId);
     this.remaining -= Date.now() - this.start;
-    console.log(this.remaining);
   };
   PauseableTimeout.prototype.resume = function () {
     this.start = Date.now();
@@ -91,7 +90,7 @@ if (!Math.trunc) {
   //
   if (nav && navA) {
     (function () {
-      var lastKnownScrollY = window.pageYOffset, _sticked = false, _ticking = false;
+      var lastKnownScrollY = window.pageYOffset, _sticked = false, _absolute = false, _ticking = false;
       window.addEventListener('scroll', function () {
         if (!_ticking) {
           window.requestAnimationFrame(function () {
@@ -104,6 +103,19 @@ if (!Math.trunc) {
               } else if (_sticked && window.pageYOffset <= navAnchorTop) {
                 nav.classList.remove('sticky');
                 _sticked = false;
+              }
+
+              // IE stuff ...
+              if ('documentMode' in window.document) {
+                const navStyleTop = parseFloat(window.getComputedStyle(nav).top),
+                  bottomAnchor = cumulativeOffsetTop(main) + main.clientHeight - nav.clientHeight - (isNaN(navStyleTop) ? 0 : navStyleTop);
+                if (!_absolute && window.pageYOffset > bottomAnchor) {
+                  nav.classList.add('absolute');
+                  _absolute = true;
+                } else if (_absolute && window.pageYOffset <= bottomAnchor) {
+                  nav.classList.remove('absolute');
+                  _absolute = false;
+                }
               }
             }
             _ticking = false;
@@ -134,7 +146,6 @@ if (!Math.trunc) {
     if (targetSection) {
       ev.preventDefault();
       history.pushState(null, document.title, '#' + targetSection.id);
-      //window.location.replace('#' + targetSection.id);
       targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
 
       return false;

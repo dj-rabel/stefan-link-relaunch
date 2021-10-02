@@ -16,8 +16,10 @@
   @include color-typography(invert);
   //position: absolute;
   position: sticky;
-  top: -1.25em;
-  height: 4.25em;
+  $undercut: -1.25em;
+  top: $undercut;
+  $height: 4.25em;
+  height: $height;
   width: _size(inner);
   //max-width: calc(100% - #{_size(element-margin) * 2});
   padding: 1em;
@@ -82,7 +84,7 @@
     }
   }
 
-  &.sticky {
+  &.sticky, &.absolute {
     padding: 0.5em 1em;
     background-color: transparentize(_palette(invert, bg-alt), 0.05);
     border-top-left-radius: 0;
@@ -124,6 +126,19 @@
           font-size: 0.9em;
         }
       }
+    }
+  }
+
+  // IE10+11 Fix
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    &.absolute {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: $height + $undercut;
+      max-width: 100%;
     }
   }
 
