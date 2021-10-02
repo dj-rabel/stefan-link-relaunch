@@ -9,6 +9,15 @@ if (window.HTMLCollection && !HTMLCollection.prototype.forEach) {
     }
   };
 }
+if (typeof window.Event !== 'function') {
+  window.Event = function (typeArg, eventInit) {
+    eventInit = typeof eventInit == 'object' ? eventInit : {};
+    const ev = document.createEvent(typeArg);
+    ev.initEvent(typeArg, eventInit.bubbles || false, eventInit.cancelable || false);
+
+    return ev;
+  };
+}
 
 (function ($) {
 
