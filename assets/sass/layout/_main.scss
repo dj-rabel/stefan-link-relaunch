@@ -10,7 +10,7 @@
   @include color(invert);
   border-radius: _size(border-radius-main);
   position: relative;
-  //overflow-y: hidden;
+  //overflow-y: hidden; DONT USE OVERFLOW HIDDEN, IT KILLS POSITION:STICKY!
 
   > .main {
     @include padding(5em, 5em);

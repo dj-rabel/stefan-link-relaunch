@@ -6,7 +6,8 @@
 
 /* Header */
 #header {
-  @include padding(5em, 5em, (0, 0, -2em, 0));
+  //@include padding(5em, 5em, (0, 0, -2em, 0));
+  @include padding(5em, 0, (0, 0, -2em, 0));
   text-align: center;
   overflow: hidden;
   display: flex;
@@ -29,24 +30,25 @@
   }
 
   #portrait {
-    //margin: 0 -2em 0;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     img {
-      width: 100%;
+      width: auto;
       display: block;
       max-height: 450px; // TODO: Check later with updated portrait image!
-      visibility: hidden;
+      max-width: 100%;
+      margin-left: 50%;
+      @include vendor('transform', 'translateX(-50%)');
     }
   }
 
   &.alt {
-    @include padding(6em, 5em, (1em, 0, 0, 0));
+    @include padding(5em, 0, (1em, 0, 0, 0));
     padding-bottom: 0 !important;
-    min-height: calc(100vh - 4.25em);
-    @include breakpoint('<=large') {
-      min-height: calc(100vh - 5em);
+    min-height: calc(100vh - 6.25rem);
+    @include breakpoint('<=xlarge') {
+      min-height: calc(100vh - 5rem);
     }
     @include breakpoint('<=small') {
       min-height: auto;
@@ -56,25 +58,21 @@
       font-size: 3.25em;
     }
 
-    //> * {
-    //  @include vendor('transition', 'opacity 3s ease');
-    //  @include vendor('transition-delay', '0.5s');
-    //  opacity: 1;
-    //}
-
-    .logo {
-      @include vendor('transition', (
-        'opacity 1.25s ease',
-        'transform 0.5s ease'
-      ));
-      @include vendor('transition-delay', '0s');
-      display: block;
-      margin: 0 0 (_size(element-margin) * 0.75) 0;
-
-      img {
-        display: block;
-        margin: 0 auto;
-        max-width: 75%;
+    // IE10+11 Fix
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      > * {
+        display: table-row;
+      }
+      #portrait {
+        display: table-row;
+        height: 100%;
+        > div {
+          display: table-cell;
+          vertical-align: bottom;
+        }
       }
     }
   }
@@ -83,7 +81,9 @@
     @include padding(4em, 4em, (0, 0, -2em, 0));
 
     &.alt {
-      @include padding(5em, 4em, (1em, 0, 0, 0));
+      //@include padding(5em, 4em, (1em, 0, 0, 0));
+      @include padding(5em, 0, (1em, 0, 0, 0));
+      font-size: 14pt;
     }
   }
 
@@ -91,7 +91,8 @@
     @include padding(4em, 3em, (0, 0, -2em, 0));
 
     &.alt {
-      @include padding(4em, 3em, (1em, 0, 0, 0));
+      //@include padding(4em, 3em, (1em, 0, 0, 0));
+      @include padding(5em, 0, (1em, 0, 0, 0));
     }
   }
 
@@ -104,7 +105,9 @@
     }
 
     &.alt {
-      @include padding(3em, 2em, (1em, 0, 0, 0));
+      //@include padding(3em, 2em, (1em, 0, 0, 0));
+      @include padding(3em, 0, (1em, 0, 0, 0));
+      font-size: inherit;
 
       h1 {
         font-size: 2.5em;
@@ -116,7 +119,8 @@
     @include padding(3em, 1.5em, (0, 0, -1em, 0));
 
     &.alt {
-      @include padding(3em, 1.5em, (1em, 0, 0, 0));
+      //@include padding(3em, 1.5em, (1em, 0, 0, 0));
+      @include padding(3em, 0, (1em, 0, 0, 0));
     }
   }
 
@@ -124,7 +128,8 @@
     @include padding(2.5em, 1em, (0, 0, -1em, 0));
 
     &.alt {
-      @include padding(2.5em, 1em, (1em, 0, 0, 0));
+      //@include padding(2.5em, 1em, (1em, 0, 0, 0));
+      @include padding(2.5em, 0, (1em, 0, 0, 0));
     }
   }
 }
