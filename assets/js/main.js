@@ -45,7 +45,7 @@ if (!Math.trunc) {
   //   }, 100);
   // })
   window.setTimeout(function () {
-    window.requestAnimationFrame(function(){
+    window.requestAnimationFrame(function () {
       document.getElementById('backdrop').classList.remove('is-preload');
     });
   }, 1000);
@@ -90,18 +90,18 @@ if (!Math.trunc) {
   // Fixed Nav
   //
   if (nav && navA) {
-    (function() {
-      var lastKnownScrollY = window.pageYOffset , _sticked = false, _ticking = false;
+    (function () {
+      var lastKnownScrollY = window.pageYOffset, _sticked = false, _ticking = false;
       window.addEventListener('scroll', function () {
-        if(!_ticking) {
+        if (!_ticking) {
           window.requestAnimationFrame(function () {
             const navAnchorTop = main.offsetTop + (navA ? navA.offsetTop : 0);
-            if (lastKnownScrollY !== window.pageYOffset ) {
-              lastKnownScrollY = window.pageYOffset ;
-              if (!_sticked && window.pageYOffset  > navAnchorTop) {
+            if (lastKnownScrollY !== window.pageYOffset) {
+              lastKnownScrollY = window.pageYOffset;
+              if (!_sticked && window.pageYOffset > navAnchorTop) {
                 nav.classList.add('sticky');
                 _sticked = true;
-              } else if (_sticked && window.pageYOffset  <= navAnchorTop) {
+              } else if (_sticked && window.pageYOffset <= navAnchorTop) {
                 nav.classList.remove('sticky');
                 _sticked = false;
               }
@@ -133,8 +133,11 @@ if (!Math.trunc) {
 
     if (targetSection) {
       ev.preventDefault();
-      window.location.replace('#' + targetSection.id);
+      history.pushState(null, document.title, '#' + targetSection.id);
+      //window.location.replace('#' + targetSection.id);
       targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+
+      return false;
     }
   };
   var sectionIDList = [];
@@ -148,11 +151,11 @@ if (!Math.trunc) {
       const sectionList = Array.prototype.slice.call(document.querySelectorAll(sectionIDList.join(','))).reverse();
       var activeSection = sectionList[sectionList.length - 1], _ticking = false; // Initial
       window.addEventListener('scroll', function () {
-        if(!_ticking) {
+        if (!_ticking) {
           window.requestAnimationFrame(function () {
             for (var i = 0, s = sectionList[i]; i < sectionList.length; i++, s = sectionList[i]) {
               // Tolerance for "scrollIntoView" not being pixel accurate!
-              if (cumulativeOffsetTop(s) <= (window.pageYOffset  + 5)) {
+              if (cumulativeOffsetTop(s) <= (window.pageYOffset + 5)) {
                 if (activeSection !== s) {
                   const o = activeSection;
                   window.requestAnimationFrame(function () {
