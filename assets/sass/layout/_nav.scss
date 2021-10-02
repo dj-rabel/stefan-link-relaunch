@@ -30,8 +30,6 @@
   vertical-align: bottom;
   z-index: _misc(z-index-base);
 
-
-
   @include breakpoint('<=large') {
     font-size: 1.15em;
   }
@@ -95,6 +93,15 @@
       position: fixed;
       display: flex;
       flex-direction: column;
+      width: _size(inner);
+      max-width: calc(100% - 4rem);
+      @include breakpoint('<=xsmall') {
+        max-width: calc(100% - 2rem);
+      }
+      @include breakpoint('<=xxsmall') {
+        max-width: 100%;
+      }
+
       &:before {
         content: '';
         display: block;
