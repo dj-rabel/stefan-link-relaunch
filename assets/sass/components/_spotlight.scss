@@ -70,10 +70,11 @@
     img {
       position: relative;
       display: block;
-      border-radius: 100%;
       width: 16em;
       padding: .4em;
       background: _palette(invert, bg);
+      border-radius: 100%;
+      border: 0.01px solid transparent; // IE11 fix!
     }
   }
 

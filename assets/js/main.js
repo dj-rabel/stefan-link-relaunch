@@ -1,3 +1,5 @@
+'use strict';
+
 if (window.NodeList && !NodeList.prototype.forEach && Array.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
@@ -9,15 +11,20 @@ if (window.HTMLCollection && !HTMLCollection.prototype.forEach) {
     }
   };
 }
-if (typeof window.Event !== 'function') {
-  window.Event = function (typeArg, eventInit) {
-    eventInit = typeof eventInit == 'object' ? eventInit : {};
-    const ev = document.createEvent(typeArg);
-    ev.initEvent(typeArg, eventInit.bubbles || false, eventInit.cancelable || false);
-
-    return ev;
+if (!Math.trunc) {
+  Math.trunc = function (n) {
+    return n < 0 ? Math.ceil(n) : Math.floor(n);
   };
 }
+// if (typeof window.Event !== 'function') {
+//   window.Event = function (typeArg, eventInit) {
+//     eventInit = typeof eventInit == 'object' ? eventInit : {};
+//     const ev = document.createEvent(typeArg);
+//     ev.initEvent(typeArg, eventInit.bubbles || false, eventInit.cancelable || false);
+//
+//     return ev;
+//   };
+// }
 
 (function ($) {
 
@@ -83,21 +90,38 @@ if (typeof window.Event !== 'function') {
   // Fixed Nav
   //
   if (nav && navA) {
-    var lastKnownScrollY = window.scrollY, sticked = false;
-    window.addEventListener('scroll', function () {
-      const navAnchorTop = main.offsetTop + (navA ? navA.offsetTop : 0);
-      if (lastKnownScrollY !== window.scrollY) {
-        lastKnownScrollY = window.scrollY;
-        if (!sticked && window.scrollY > navAnchorTop) {
-          nav.classList.add('sticky');
-          sticked = true;
-        } else if (sticked && window.scrollY <= navAnchorTop) {
-          nav.classList.remove('sticky');
-          sticked = false;
+    (function() {
+      var lastKnownScrollY = window.pageYOffset , _sticked = false, _ticking = false;
+      window.addEventListener('scroll', function () {
+        if(!_ticking) {
+          window.requestAnimationFrame(function () {
+            const navAnchorTop = main.offsetTop + (navA ? navA.offsetTop : 0);
+            if (lastKnownScrollY !== window.pageYOffset ) {
+              lastKnownScrollY = window.pageYOffset ;
+              if (!_sticked && window.pageYOffset  > navAnchorTop) {
+                nav.classList.add('sticky');
+                _sticked = true;
+              } else if (_sticked && window.pageYOffset  <= navAnchorTop) {
+                nav.classList.remove('sticky');
+                _sticked = false;
+              }
+            }
+            _ticking = false;
+          });
+          _ticking = true;
         }
+      });
+      if (typeof window.Event !== 'function') {
+        // Trigger scroll event for IE11 and below
+        window.requestAnimationFrame(function () {
+          const mod = window.pageYOffset ? -1 : 1;
+          window.scrollTo(window.pageXOffset, window.pageYOffset + mod);
+          window.scrollTo(window.pageXOffset, window.pageYOffset - mod);
+        });
+      } else {
+        window.dispatchEvent(new window.Event('scroll'));
       }
-    });
-    window.dispatchEvent(new window.Event('scroll'));
+    })();
   }
 
   //
@@ -119,26 +143,34 @@ if (typeof window.Event !== 'function') {
     a.addEventListener('click', navOnclickCallback);
   });
   if (sectionIDList.length) {
-    // Finds all sections in their DOM ORDER and REVERSES the order!
-    const sectionList = Array.prototype.slice.call(document.querySelectorAll(sectionIDList.join(','))).reverse();
-    var activeSection = sectionList[sectionList.length - 1]; // Initial
-    window.addEventListener('scroll', function () {
-      for (var i = 0, s = sectionList[i]; i < sectionList.length; i++, s = sectionList[i]) {
-        // Tolerance for "scrollIntoView" not being pixel accurate!
-        if (cumulativeOffsetTop(s) <= (window.scrollY + 5)) {
-          if (activeSection !== s) {
-            const o = activeSection;
-            window.requestAnimationFrame(function () {
-              document.querySelector('[href="#' + o.id + '"]').classList.remove('active');
-              document.querySelector('[href="#' + s.id + '"]').classList.add('active');
-            });
-            activeSection = s;
-          }
+    (function () {
+      // Finds all sections in their DOM ORDER and REVERSES the order!
+      const sectionList = Array.prototype.slice.call(document.querySelectorAll(sectionIDList.join(','))).reverse();
+      var activeSection = sectionList[sectionList.length - 1], _ticking = false; // Initial
+      window.addEventListener('scroll', function () {
+        if(!_ticking) {
+          window.requestAnimationFrame(function () {
+            for (var i = 0, s = sectionList[i]; i < sectionList.length; i++, s = sectionList[i]) {
+              // Tolerance for "scrollIntoView" not being pixel accurate!
+              if (cumulativeOffsetTop(s) <= (window.pageYOffset  + 5)) {
+                if (activeSection !== s) {
+                  const o = activeSection;
+                  window.requestAnimationFrame(function () {
+                    document.querySelector('[href="#' + o.id + '"]').classList.remove('active');
+                    document.querySelector('[href="#' + s.id + '"]').classList.add('active');
+                  });
+                  activeSection = s;
+                }
 
-          break;
+                break;
+              }
+            }
+            _ticking = false;
+          });
         }
-      }
-    });
+        _ticking = true;
+      });
+    })();
   }
 
   //
@@ -209,11 +241,9 @@ if (typeof window.Event !== 'function') {
   };
   BoxSlider.prototype.pause = function () {
     if (this.timeout) this.timeout.pause();
-    console.log('pause');
   };
   BoxSlider.prototype.resume = function () {
     if (this.timeout) this.timeout.resume();
-    console.log('resume');
   };
 
   const sliderMap = new Map();
