@@ -24,7 +24,7 @@
     text-shadow: 2px 2px 3px black;
     letter-spacing: _font(letter-spacing);
     &.flex-1 {
-      flex: 1;
+      flex: 1 1 auto;
     }
   }
 
