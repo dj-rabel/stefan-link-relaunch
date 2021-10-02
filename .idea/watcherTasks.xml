@@ -41,5 +41,25 @@
       <option name="workingDir" value="$FileDir$" />
       <envs />
     </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value=".\ --config-file uglifyconfig.json --output main.min.js --pattern &quot;libs/*.js,components/*.js,*.js&quot;" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="js" />
+      <option name="immediateSync" value="true" />
+      <option name="name" value="JS Minify" />
+      <option name="output" value="$ProjectFileDir$\assets\js\main.min.js:$ProjectFileDir$\assets\js\main.min.js.map" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="uglifyjs-folder" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="js" />
+      <option name="trackOnlyRoot" value="false" />
+      <option name="workingDir" value="$ProjectFileDir$/assets/js" />
+      <envs />
+    </TaskOptions>
   </component>
 </project>

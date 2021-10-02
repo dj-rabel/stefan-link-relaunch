@@ -11,7 +11,7 @@ body {
   color: _palette(fg);
 }
 
-body, input, select, textarea {
+html, body, input, select, textarea {
   font-family: _font(family);
   font-size: 17pt;
   font-weight: _font(weight);

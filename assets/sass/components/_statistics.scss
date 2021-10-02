@@ -107,7 +107,9 @@
   }
 
   @include breakpoint('<=medium') {
+    @include vendor('flex-wrap', 'wrap');
     li {
+      @include vendor('flex-basis', '50%');
       strong, b {
         font-size: 1.5em;
       }
