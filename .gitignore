@@ -1,2 +1,8 @@
 # Visual Studio Code project
 /.vscode/
+
+# Classic nodejs super deep vendor dir
+/node_modules/
+
+# Yarn stuff
+/yarn-error.log

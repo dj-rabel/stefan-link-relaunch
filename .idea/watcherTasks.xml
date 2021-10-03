@@ -47,7 +47,7 @@
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="js" />
-      <option name="immediateSync" value="true" />
+      <option name="immediateSync" value="false" />
       <option name="name" value="JS Minify" />
       <option name="output" value="$ProjectFileDir$\assets\js\main.min.js:$ProjectFileDir$\assets\js\main.min.js.map" />
       <option name="outputFilters">
@@ -59,6 +59,26 @@
       <option name="scopeName" value="js" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$ProjectFileDir$/assets/js" />
+      <envs />
+    </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="html" />
+      <option name="immediateSync" value="false" />
+      <option name="name" value="HTML" />
+      <option name="output" value="$ProjectFileDir$" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="$ProjectFileDir$/.bin/sergey-wrapper" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="html" />
+      <option name="trackOnlyRoot" value="false" />
+      <option name="workingDir" value="$ProjectFileDir$" />
       <envs />
     </TaskOptions>
   </component>

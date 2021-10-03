@@ -1,0 +1,10 @@
+{
+  "name": "stefan-link-relaunch",
+  "version": "1.0.0",
+  "dependencies": {
+    "sass": "^1.42.1",
+    "sergey": "^0.0.13",
+    "uglifyjs": "^2.4.11",
+    "uglifyjs-folder": "^3.0.0"
+  }
+}

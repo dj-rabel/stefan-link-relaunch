@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="html" pattern="file[stefan-link-relaunch]:templates//*" />
+</component>
