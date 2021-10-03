@@ -21,16 +21,21 @@
   $height: 4.25em;
   height: $height;
   width: _size(inner);
-  //max-width: calc(100% - #{_size(element-margin) * 2});
+  max-width: 100%;
   padding: 1em;
   background-color: _palette(invert, bg-alt);
   border-top-left-radius: _size(border-radius-main);
   border-top-right-radius: _size(border-radius-main);
+  z-index: _misc(z-index-base);
   cursor: default;
   text-align: center;
-  display: table-cell;
-  vertical-align: bottom;
-  z-index: _misc(z-index-base);
+  display: flex;
+  flex-direction: column;
+  &:before {
+    content: '';
+    display: block;
+    flex: 1 1 auto;
+  }
 
   @include breakpoint('<=large') {
     font-size: 1.15em;
