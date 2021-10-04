@@ -12,20 +12,28 @@
 </head>
 <body>
 
-<div id="backdrop" class="is-preload"
-     style="background-image: url('images/house-garden-bg.jpg')">
-  <img src="images/house-garden-bg.jpg" alt="Kulisse" />
-</div>
-
 <!-- Header -->
 <header id="header" class="alt">
   <h1>Stefan Link</h1>
   <p class="flex-1">Dipl.-Ing. (FH)<br>
     Freier Garten- und Landschaftsarchitekt</p>
   <div id="portrait">
+    <!-- <div> wraps for IE11 =( -->
     <div><div>
       <img src="images/stefan-transparentbg-scaled-shadow.png" alt="Stefan Link" />
     </div></div>
+  </div>
+
+  <div id="backdrop" class="is-preload"
+       style="background-image: url('images/stage_bg/house-garden-bg-1920px.min.jpg')">
+    <picture>
+      <source media="(max-width:737px) and (max-height:491px)" srcset="images/stage_bg/house-garden-bg-737px.min.jpg">
+      <source media="(max-width:981px) and (max-height:654px)" srcset="images/stage_bg/house-garden-bg-981px.min.jpg">
+      <source media="(max-width:1281px) and (max-height:854px)" srcset="images/stage_bg/house-garden-bg-1281px.min.jpg">
+      <source media="(max-width:1920px) and (max-height:1280px)" srcset="images/stage_bg/house-garden-bg-1920px.min.jpg">
+      <source media="(max-width:2560px) and (max-height:1707px)" srcset="images/stage_bg/house-garden-bg-2560px.min.jpg">
+      <img src="images/stage_bg/house-garden-bg.min.jpg" alt="Kulisse" />
+    </picture>
   </div>
 </header>
 
