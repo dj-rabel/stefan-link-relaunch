@@ -9,9 +9,10 @@
   //@include padding(5em, 5em, (0, 0, -2em, 0));
   @include padding(5em, 0, (0, 0, -2em, 0));
   text-align: center;
-  overflow: hidden;
+  //overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   h1 {
     font-weight: bolder;
@@ -41,6 +42,9 @@
       margin-left: 50%;
       @include vendor('transform', 'translateX(-50%)');
     }
+    @media screen and (orientation:landscape) and (max-width: 899px) {
+      display: none;
+    }
   }
 
   &.alt {
@@ -54,12 +58,20 @@
       min-height: auto;
     }
 
+    // Tablet overrides to prevent large open area
+    @media screen and (orientation:portrait) and (min-height:1025px) and (min-width:nth(map-get($breakpoints, 'medium'), 1)) {
+      min-height: calc(1025px - 4.25rem);
+    }
+    @media screen and (orientation:portrait) and (min-height:1025px) and (min-width:nth(map-get($breakpoints, 'medium'), 1)) and (max-width:nth(map-get($breakpoints, 'large'), 2)) {
+      min-height: calc(1025px - 5rem);
+    }
+
     h1 {
       font-size: 3.25em;
     }
 
     // IE10+11 Fix
-    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    @include browser-hack('ie10+') {
       display: table;
       table-layout: fixed;
       width: 100%;
@@ -83,7 +95,7 @@
     &.alt {
       //@include padding(5em, 4em, (1em, 0, 0, 0));
       @include padding(5em, 0, (1em, 0, 0, 0));
-      font-size: 14pt;
+      //font-size: 14pt;
     }
   }
 

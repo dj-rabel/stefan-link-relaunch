@@ -18,7 +18,7 @@
   position: sticky;
   $undercut: -1.25em;
   top: $undercut;
-  $height: 4.25em;
+  $height: $nav-height;
   height: $height;
   width: _size(inner);
   max-width: 100%;
@@ -37,6 +37,7 @@
     flex: 1 1 auto;
   }
 
+  // Scaling replicated in _backdrop.scss
   @include breakpoint('<=large') {
     font-size: 1.15em;
   }
@@ -52,6 +53,7 @@
     margin: 0 auto;
     padding: 0;
     list-style: none;
+    white-space: nowrap;
 
     li {
       @include vendor('transition', (
@@ -96,7 +98,7 @@
     border-top-right-radius: 0;
 
     // IE10+11 Fix
-    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    @include browser-hack('ie10+') {
       position: fixed;
       display: flex;
       flex-direction: column;
@@ -135,7 +137,7 @@
   }
 
   // IE10+11 Fix
-  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  @include browser-hack('ie10+') {
     &.absolute {
       position: absolute;
       top: auto;

@@ -1,0 +1,71 @@
+/**
+ * Available browser options
+ *
+ * - ie9
+ * - ie9+       (same as ie9-11)
+ * - ie9-10
+ * - ie9-11
+ * - ie10+
+ * - ie10-11
+ * - ie11
+ * - edge       (same as edge12-18)
+ * - edge12+    (same as edge12-18)
+ * - edge12-15
+ * - edge12-18
+ * - edge16+
+ * - edge16-18
+ *
+ * @param {list} $browserlist
+ */
+@mixin browser-hack($browserlist: ()) {
+  @if type-of($browserlist) == string {
+    $browserlist: str-split($browserlist, ',');
+  }
+
+  @each $browser in $browserlist {
+    @if $browser == 'ie9' {
+      @media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+        @content;
+      }
+    }
+    @else if $browser == 'ie9-10' {
+      @media screen and (min-width:0\0) {
+        @content;
+      }
+    }
+    @else if index('ie9+' ie9-11, $browser) {
+      @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+        @content;
+      }
+    }
+    @else if index('ie10+' ie10-11, $browser) {
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+      }
+    }
+    @else if $browser == 'ie11' {
+      & {
+        @at-root #{'_:-ms-fullscreen, '}:root & {
+          @content;
+        }
+      }
+    }
+    @else if $browser == 'edge' or index('edge12+' edge12-18, $browser) or ($browser == 'edge12-15' and $browser == 'edge16-18') {
+      @supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
+        @content;
+      }
+    }
+    @else if $browser == 'edge12-15' {
+      @supports (-ms-accelerator:true) {
+        @content;
+      }
+    }
+    @else if index('edge16+' edge16-18, $browser) {
+      @supports (-ms-ime-align:auto) {
+        @content;
+      }
+    } @else {
+      @error 'Unknown value "#{$browser}" supplied for argument $browserlist';
+    }
+  }
+}

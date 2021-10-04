@@ -18,8 +18,12 @@ $size: (
 );
 
 // Font.
+$font-fallback-windows: corbel; // or maybe "futura"?
+$font-fallback-macos: gill sans; // or maybe "seravek"?
+$font-fallback-global: arial;
 $font: (
-  family: ('Source Sans Pro', Helvetica, sans-serif),
+
+  family: ('Source Sans Pro', $font-fallback-windows, $font-fallback-macos, $font-fallback-global),
   family-fixed: ('Courier New', monospace),
   weight: 300,
   weight-bold: 400,
@@ -71,3 +75,5 @@ $slices: (
   4: 0.68,
   5: 0.85,
 );
+
+$nav-height: 4.25em;
