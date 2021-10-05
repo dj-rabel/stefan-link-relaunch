@@ -1,11 +1,3 @@
-html {
-  @include browser-hack('ie11') {
-    body, body.x {
-      display: none;
-    }
-  }
-}
-
 #backdrop {
   position: absolute;
   top: 0;

@@ -25,6 +25,7 @@
     font-weight: bolder;
     text-shadow: 2px 2px 3px black;
     letter-spacing: _font(letter-spacing);
+
     &.flex-1 {
       flex: 1 1 auto;
     }
@@ -34,6 +35,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+
     img {
       width: auto;
       display: block;
@@ -42,7 +44,11 @@
       margin-left: 50%;
       @include vendor('transform', 'translateX(-50%)');
     }
-    @media screen and (orientation:landscape) and (max-width: 899px) {
+
+    @media screen and (orientation:landscape) and (max-width:800px) {
+      display: none;
+    }
+    @media screen and (min-width:nth(map-get($breakpoints, 'small'), 1)) and (max-height:768px) {
       display: none;
     }
   }
@@ -54,15 +60,18 @@
     @include breakpoint('<=large') {
       min-height: calc(100vh - 5rem);
     }
-    @include breakpoint('<=small') {
-      min-height: auto;
+    @include breakpoint('<=xsmall') {
+      min-height: calc(100vh - 4.25rem);
     }
-
-    // Tablet overrides to prevent large open area
-    @media screen and (orientation:portrait) and (min-height:1025px) and (min-width:nth(map-get($breakpoints, 'medium'), 1)) {
+    // Prevent large open area on phone
+    @media screen and (max-aspect-ratio: 1/2) { // Or 8/16
+      min-height: calc(100vw * 2 - 4.25rem);
+    }
+    @media screen and (orientation: portrait) and (min-height: 1025px) and (max-width: nth(map-get($breakpoints, 'small'), 2)) {
       min-height: calc(1025px - 4.25rem);
     }
-    @media screen and (orientation:portrait) and (min-height:1025px) and (min-width:nth(map-get($breakpoints, 'medium'), 1)) and (max-width:nth(map-get($breakpoints, 'large'), 2)) {
+    // Tablet overrides to prevent large open area
+    @media screen and (orientation: portrait) and (min-height: 1025px) and (min-width: nth(map-get($breakpoints, 'medium'), 1)) and (max-width: nth(map-get($breakpoints, 'large'), 2)) {
       min-height: calc(1025px - 5rem);
     }
 
@@ -81,6 +90,7 @@
       #portrait {
         display: table-row;
         height: 100%;
+
         > div {
           display: table-cell;
           vertical-align: bottom;
