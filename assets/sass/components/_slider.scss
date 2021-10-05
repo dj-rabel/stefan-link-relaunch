@@ -9,14 +9,17 @@
     display: block;
     width: 100%;
     height: 100%;
-    top: -200%;
-    left: -200%;
+    top: 0;
+    left: 0;
+    //top: -200%;
+    //left: -200%;
 
     background-position: center;
     background-size: cover;
     will-change: left, top, transform;
 
-    transform: scale(1);
+    //transform: scale(1);
+    transform: translate(-100%, -100%);
     transition: transform .3s ease-in-out;
 
     //animation-name: slideIn-left;
@@ -25,8 +28,9 @@
     animation-fill-mode: forwards;
 
     &:first-child {
-      top: 0;
-      left: 0;
+      transform: translate(0, 0);
+      //top: 0;
+      //left: 0;
     }
   }
 
@@ -45,41 +49,73 @@
 
 @keyframes slideIn-left {
   from {
-    top: 0;
-    left: -100%;
+    transform: translate(-100%, 0);
   }
   to {
-    top: 0;
-    left: 0;
+    transform: translate(0, 0);
   }
 }
 @keyframes slideIn-right {
   from {
-    top: 0;
-    left: 100%;
+    transform: translate(100%, 0);
   }
   to {
-    top: 0;
-    left: 0;
+    transform: translate(0, 0);
   }
 }
 @keyframes slideIn-up {
   from {
-    top: 100%;
-    left: 0;
+    transform: translate(0, 100%);
   }
   to {
-    top: 0;
-    left: 0;
+    transform: translate(0, 0);
   }
 }
 @keyframes slideIn-down {
   from {
-    top: -100%;
-    left: 0;
+    transform: translate(0, -100%);
   }
   to {
-    top: 0;
-    left: 0;
+    transform: translate(0, 0);
   }
 }
+//@keyframes slideIn-left {
+//  from {
+//    top: 0;
+//    left: -100%;
+//  }
+//  to {
+//    top: 0;
+//    left: 0;
+//  }
+//}
+//@keyframes slideIn-right {
+//  from {
+//    top: 0;
+//    left: 100%;
+//  }
+//  to {
+//    top: 0;
+//    left: 0;
+//  }
+//}
+//@keyframes slideIn-up {
+//  from {
+//    top: 100%;
+//    left: 0;
+//  }
+//  to {
+//    top: 0;
+//    left: 0;
+//  }
+//}
+//@keyframes slideIn-down {
+//  from {
+//    top: -100%;
+//    left: 0;
+//  }
+//  to {
+//    top: 0;
+//    left: 0;
+//  }
+//}
