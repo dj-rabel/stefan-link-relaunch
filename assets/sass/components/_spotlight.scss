@@ -30,7 +30,8 @@
     margin-left: 4em;
     padding: .25em;
     border-radius: 100%;
-    //border: solid 1px;
+    pointer-events: none;
+    @include vendor('user-select', 'none');
 
     .border {
       span {

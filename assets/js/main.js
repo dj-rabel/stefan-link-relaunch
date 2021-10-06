@@ -19,7 +19,10 @@
   // })
   win.setTimeout(function () {
     win.requestAnimationFrame(function () {
-      doc.getElementById('backdrop').classList.remove('is-preload');
+      const backdrop = doc.getElementById('backdrop');
+      if(backdrop) {
+        backdrop.classList.remove('is-preload');
+      }
     });
   }, 1000);
 
