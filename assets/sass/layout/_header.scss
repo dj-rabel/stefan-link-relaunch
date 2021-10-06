@@ -35,6 +35,8 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    pointer-events: none;
+    @include vendor('user-select', 'none');
 
     img {
       width: auto;
