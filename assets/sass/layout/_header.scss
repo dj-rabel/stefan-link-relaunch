@@ -50,7 +50,8 @@
   &.alt {
     @include padding(5em, 0, (1em, 0, 0, 0));
     padding-bottom: 0 !important;
-    min-height: calc(100vh - 4.25rem);
+    //min-height: calc(100vh - 4.25rem);
+    min-height: calc(100% - 4.25rem);
     @include breakpoint('<=large') {
       min-height: calc(100vh - 5rem);
     }
