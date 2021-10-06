@@ -70,17 +70,16 @@
   &.alt {
     @include padding(5em, 0, (1em, 0, 0, 0));
     padding-bottom: 0 !important;
-    //min-height: calc(100vh - 4.25rem);
     min-height: calc(100% - 4.25rem);
     @include breakpoint('<=large') {
-      min-height: calc(100vh - 5rem);
+      min-height: calc(100% - 5rem);
     }
     @include breakpoint('<=xsmall') {
-      min-height: calc(100vh - 4.25rem);
+      min-height: calc(100% - 4.25rem);
     }
     // Prevent large open area on phone
     @media screen and (max-aspect-ratio: 1/2) { // Or 8/16
-      min-height: calc(100vw * 2 - 4.25rem);
+      min-height: calc(100% * 2 - 4.25rem);
     }
     @media screen and (orientation: portrait) and (min-height: 1025px) and (max-width: nth(map-get($breakpoints, 'small'), 2)) {
       min-height: calc(1025px - 4.25rem);

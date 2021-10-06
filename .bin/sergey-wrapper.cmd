@@ -1,3 +1,4 @@
-call .\node_modules\.bin\sergey --root=./templates/ --output=./_out --exclude=_out,_imports
-move /Y .\templates\_out\*.html .\
-rmdir .\templates\_out
+mkdir --parents ./templates/imports
+call .\node_modules\.bin\sergey --root=./templates/ --output=./out --imports=./imports --exclude=out,imports
+move /Y .\templates\out\*.html .\
+rmdir .\templates\out

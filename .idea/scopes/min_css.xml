@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="min.css" pattern="file[stefan-link-relaunch]:assets/css//*.min.css" />
+</component>

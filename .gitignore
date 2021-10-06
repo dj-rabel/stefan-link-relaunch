@@ -9,3 +9,9 @@
 
 # Yarn stuff
 /yarn-error.log
+
+# Sergey compile out
+/templates/out/
+
+# MD5 files
+/templates/imports/*.md5
