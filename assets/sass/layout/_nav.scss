@@ -151,7 +151,6 @@
 
   &.left {
     text-align: left;
-    margin: 0;
     padding-left: 5em;
     @include breakpoint('<=large') {
       padding-left: 4em;
@@ -170,6 +169,7 @@
     }
 
     ul {
+      margin: 0;
       li {
         margin: 0 0.7em 0 0;
       }
