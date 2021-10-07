@@ -5,6 +5,10 @@
     "sass": "^1.42.1",
     "sergey": "^0.0.13",
     "uglifyjs": "^2.4.11",
-    "uglifyjs-folder": "^3.0.0"
+    "uglifyjs-folder": "^3.0.0",
+    "yargs": "^17.2.1"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.3"
   }
 }

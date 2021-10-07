@@ -81,7 +81,7 @@
       <option name="workingDir" value="$ProjectFileDir$" />
       <envs />
     </TaskOptions>
-    <TaskOptions isEnabled="true">
+    <TaskOptions isEnabled="false">
       <option name="arguments" value="/C &quot;CERTUTIL -hashfile $FilePath$ MD5 | FIND /i /v %V_MD5% | FIND /i /v %V_CERTUTIL% &gt; $ProjectFileDir$\templates\imports\$FileName$.md5&quot;" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
@@ -103,6 +103,26 @@
         <env name="V_MD5" value="&quot;MD5&quot;" />
         <env name="V_CERTUTIL" value="&quot;CERTUTIL&quot;" />
       </envs>
+    </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value=".\.bin\update-asset-tag.js --filepath $FilePathRelativeToProjectRoot$ --root $ProjectFileDir$" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="*" />
+      <option name="immediateSync" value="false" />
+      <option name="name" value="Minified Assets Templating" />
+      <option name="output" value="" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="node" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="min.[css|js]" />
+      <option name="trackOnlyRoot" value="false" />
+      <option name="workingDir" value="$ProjectFileDir$" />
+      <envs />
     </TaskOptions>
   </component>
 </project>
