@@ -51,7 +51,7 @@ try {
 
 const md5 = hash.digest('hex');
 const varMap = new Map();
-varMap.set('FILEPATH', '/' + path.relative(process.cwd(), filepath).replaceAll(path.sep, '/'));
+varMap.set('FILEPATH', path.relative(process.cwd(), filepath).replaceAll(path.sep, '/'));
 varMap.set('HASH', md5);
 
 let template;
