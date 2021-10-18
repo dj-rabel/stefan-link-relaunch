@@ -18,4 +18,11 @@
   @include breakpoint('<=xxsmall') {
     max-width: 100%;
   }
+
+  &:after {
+    content: '';
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
 }

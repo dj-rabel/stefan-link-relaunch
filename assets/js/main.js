@@ -169,4 +169,36 @@
       lastdocHiddenState = doc.hidden;
     }
   });
+
+  //
+  // Fixed Footer
+  //
+  const footer = doc.getElementById('footer');
+  if(footer) {
+    (function () {
+      const wrapper = doc.getElementById('wrapper'),
+        spacer = doc.createElement('div');
+      var fh = footer.offsetHeight, _ticking = false; // Initial
+
+      win.requestAnimationFrame(function () {
+        spacer.id = 'spacer';
+        spacer.style.height = fh + 'px';
+        footer.classList.add('fixed');
+        wrapper.parentElement.insertBefore(spacer, wrapper.nextElementSibling);
+      });
+      win.addEventListener('resize', function () {
+        if (!_ticking) {
+          win.requestAnimationFrame(function () {
+            if (fh === footer.offsetHeight) {
+              return;
+            }
+            fh = footer.offsetHeight;
+            spacer.style.height = fh + 'px';
+            _ticking = false;
+          });
+        }
+        _ticking = true;
+      });
+    })();
+  }
 })(window, document);

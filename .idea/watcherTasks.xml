@@ -42,7 +42,7 @@
       <envs />
     </TaskOptions>
     <TaskOptions isEnabled="true">
-      <option name="arguments" value=".\ --config-file uglifyconfig.json --output main.min.js --pattern &quot;libs/*.js,components/*.js,*.js&quot;" />
+      <option name="arguments" value=".\ --config-file uglifyconfig.json --output main.min.js --pattern &quot;libs/*.js,components/*.js,*.js,!*min.js&quot;" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
@@ -112,7 +112,7 @@
       <option name="fileExtension" value="*" />
       <option name="immediateSync" value="false" />
       <option name="name" value="Minified Assets Templating" />
-      <option name="output" value="" />
+      <option name="output" value="$ProjectFileDir$\templates\imports\assets\$FileName$.html" />
       <option name="outputFilters">
         <array />
       </option>
