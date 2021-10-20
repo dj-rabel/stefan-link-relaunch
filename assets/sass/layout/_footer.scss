@@ -21,7 +21,7 @@
 
   .copyright {
     width: 100%;
-    margin: (_size(element-margin) * 1.25) 0 _size(element-margin) _size(element-margin);
+    margin: (_size(element-margin) * 1.25) 0 _size(element-margin) 0;
     font-size: 0.8em;
     text-align: center;
   }
@@ -63,9 +63,21 @@
     position: fixed;
     width: calc(_size(inner) + _size(element-margin));
     max-width: calc(100% - 4em);
-    margin: 0 0 0 -2em;
+    margin: 0;
     bottom: 0;
     z-index: -1;
+
+    @include breakpoint('>=medium') {
+      margin-left: -2em;
+
+      .copyright {
+        margin-left: _size(element-margin);
+      }
+    }
+
+    @include breakpoint('<medium') {
+      margin: 0;
+    }
 
     @include breakpoint('<=xsmall') {
       max-width: calc(100% - 2em);
