@@ -61,9 +61,9 @@
 
   &.fixed {
     position: fixed;
-    width: _size(inner);
+    width: calc(_size(inner) + _size(element-margin));
     max-width: calc(100% - 4em);
-    margin: 0 auto;
+    margin: 0 0 0 -2em;
     bottom: 0;
     z-index: -1;
 
